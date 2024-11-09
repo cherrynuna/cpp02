@@ -119,7 +119,7 @@ Fixed&	Fixed::operator++(void)
 	return (*this);
 }
 
-const Fixed	Fixed::operator++(int)
+const Fixed	Fixed::operator++(int)//후위 연산자의 반환 값은 임시로 만들어진 객체이므로 해당 값에 다시 증감 연산을 했을 때 임시 객체의 값이 증감하게 되는 문제가 있다. 그걸 막기 위해 const를 붙여준다.
 {
 	const Fixed	ret(*this);
 
