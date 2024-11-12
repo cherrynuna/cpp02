@@ -6,13 +6,30 @@ std::ostream&	operator <<(std::ostream &out, const Fixed &fixed)
 	return (out);
 }
 
+bool	isTriangle(Point const a, Point const b, Point const c)
+{
+    // 벡터 AB와 AC의 외적을 계산
+    // 외적 = (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)
+    Fixed crossProduct = (b.getX() - a.getX()) * (c.getY() - a.getY()) -
+                         (b.getY() - a.getY()) * (c.getX() - a.getX());
+
+    // 외적이 0이 아니면 삼각형을 만들 수 있음
+    return !(crossProduct == Fixed(0));
+}
+
 int	main(void)
 {
-	Point	a(5, 5);
-	Point	b(2, 9);
-	Point	c(0, 5);
+	Point	a(0, 0);
+	Point	b(0, 8);
+	Point	c(8, 0);
 	Point	p(2, 8);
 	Point	p2(4, 7);
+
+	if (!isTriangle(a, b, c))
+	{
+		std::cerr << "no triangle" << std::endl;
+		return (1);
+	}
 
 	std::cout << "Point a.x = " << a.getX() << " a.y = " << a.getY() << std::endl;
 	std::cout << "Point b.x = " << b.getX() << " b.y = " << b.getY() << std::endl;
