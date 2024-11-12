@@ -7,7 +7,7 @@ bool bsp(Point const a, Point const b, Point const c, Point const point)
 
 	if ((a.getY() > point.getY()) != (b.getY() > point.getY()))
 	{
-		if (((a.getX() - b.getX()) * ((point.getY() - a.getY()) / (b.getY() - a.getY())) + b.getX()) > point.getX())
+		if (((b.getX() - a.getX()) * ((point.getY() - a.getY()) / (b.getY() - a.getY())) - a.getX()) > point.getX())
 		{
 			if (ret)
 				ret = false;
@@ -17,7 +17,7 @@ bool bsp(Point const a, Point const b, Point const c, Point const point)
 	}
 	if ((a.getY() > point.getY()) != (c.getY() > point.getY()))
 	{
-		if (((a.getX() - c.getX()) * ((point.getY() - a.getY()) / (c.getY() - a.getY())) + c.getX()) > point.getX())
+		if (((c.getX() - a.getX()) * ((point.getY() - a.getY()) / (c.getY() - a.getY())) - a.getX()) > point.getX())
 		{
 			if (ret)
 				ret = false;
@@ -27,7 +27,7 @@ bool bsp(Point const a, Point const b, Point const c, Point const point)
 	}
 	if ((b.getY() > point.getY()) != (c.getY() > point.getY()))
 	{
-		if (((b.getX() - c.getX()) * ((point.getY() - b.getY()) / (c.getY() - b.getY())) + c.getX()) > point.getX())
+		if (((c.getX() - b.getX()) * ((point.getY() - b.getY()) / (c.getY() - b.getY())) - b.getX()) > point.getX())
 		{
 			if (ret)
 				ret = false;

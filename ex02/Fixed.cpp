@@ -92,31 +92,35 @@ bool	Fixed::operator!=(Fixed const &ref) const
 Fixed	Fixed::operator+(Fixed const &ref) const
 {
 	Fixed ret(this->toFloat() + ref.toFloat());
+
 	return (ret);
 }
 
 Fixed	Fixed::operator-(Fixed const &ref) const
 {
 	Fixed ret(this->toFloat() - ref.toFloat());
+
 	return (ret);
 }
 
 Fixed	Fixed::operator*(Fixed const &ref) const
 {
 	Fixed ret(this->toFloat() * ref.toFloat());
+
 	return (ret);
 }
 
 Fixed	Fixed::operator/(Fixed const &ref) const
 {
 	Fixed ret(this->toFloat() / ref.toFloat());
+
 	return (ret);
 }
 
-Fixed&	Fixed::operator++(void)
+Fixed&	Fixed::operator++(void)//Fixed&로 반환하면 해당 객체를 그대로 참조
 {
 	this->value++;
-	return (*this);
+	return (*this);//*this는 포인터를 역참조하여 객체 자체로
 }
 
 const Fixed	Fixed::operator++(int)//후위 연산자의 반환 값은 임시로 만들어진 객체이므로 해당 값에 다시 증감 연산을 했을 때 임시 객체의 값이 증감하게 되는 문제가 있다. 그걸 막기 위해 const를 붙여준다.
@@ -127,7 +131,7 @@ const Fixed	Fixed::operator++(int)//후위 연산자의 반환 값은 임시로 
 	return (ret);
 }
 
-Fixed&	Fixed::operator--(void)
+Fixed&	Fixed::operator--(void)//
 {
 	this->value--;
 	return (*this);

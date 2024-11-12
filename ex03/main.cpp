@@ -1,5 +1,7 @@
 #include "Point.hpp"
 
+bool bsp(Point const a, Point const b, Point const c, Point const point);
+
 std::ostream&	operator <<(std::ostream &out, const Fixed &fixed)
 {
 	out << fixed.toFloat();
@@ -8,13 +10,12 @@ std::ostream&	operator <<(std::ostream &out, const Fixed &fixed)
 
 bool	isTriangle(Point const a, Point const b, Point const c)
 {
-    // 벡터 AB와 AC의 외적을 계산
-    // 외적 = (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)
-    Fixed crossProduct = (b.getX() - a.getX()) * (c.getY() - a.getY()) -
-                         (b.getY() - a.getY()) * (c.getX() - a.getX());
-
-    // 외적이 0이 아니면 삼각형을 만들 수 있음
-    return !(crossProduct == Fixed(0));
+	// 벡터 AB와 AC의 외적을 계산
+	// 외적 = (b.x - a.x) * (c.y - a.y) - (b.y - a.y) * (c.x - a.x)
+	Fixed crossProduct = (b.getX() - a.getX()) * (c.getY() - a.getY()) -
+						 (b.getY() - a.getY()) * (c.getX() - a.getX());
+	// 외적이 0이 아니면 삼각형을 만들 수 있음
+	return !(crossProduct == Fixed(0));
 }
 
 int	main(void)
